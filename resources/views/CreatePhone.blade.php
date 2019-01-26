@@ -12,8 +12,8 @@
 </head>
 <body>
 <div class="container">
-    <h2>Passport Appointment System</h2><br/>
-    <form method="post" action="{{url('passports')}}" enctype="multipart/form-data">
+    <h2>Phones repository</h2><br/>
+    <form method="post" action="{{url('phones')}}" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <div class="col-md-4"></div>
