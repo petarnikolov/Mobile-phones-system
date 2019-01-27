@@ -27,7 +27,7 @@
 
         @foreach($phones as $phone)
             @php
-                $date=date('Y-m-d', $phone['releaseDate']);
+                $date=date('Y-m-d', strtotime($phone['releaseDate']));
             @endphp
             <tr>
                 <td>{{$phone['id']}}</td>
@@ -36,7 +36,7 @@
                 <td>{{$phone['manufacturer']}}</td>
 
 
-                <td><a href="{{action('PhonesController@edit', $phone['id'])}}" class="btn btn-warning">Edit</a></td>
+                <td><a href="{{URL::to('CreatePhone', $phone['id'])}}" class="btn btn-warning">Edit</a></td>
                 <td>
                     <form action="{{action('PhonesController@destroy', $phone['id'])}}" method="post">
                         @csrf

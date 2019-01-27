@@ -28,12 +28,22 @@ class phonesController extends Controller
         $phone= new \App\Phone;
         $phone->name=$request->get('name');
         $phone->manufacturer=$request->get('manufacturer');
-        $date=date_create($request->get('releaseDate'));
-        $format = date_format($date,"Y-m-d");
-        $phone->releaseDate = strtotime($format);
+        $phone->releaseDate = $request->get('releaseDate');
         $phone->filename=$name;
         $phone->save();
 
         return redirect('phones')->with('success', 'Information has been added');
+    }
+    public function edit($id)
+    {
+        $phone = \App\Phone::find($id);
+        return view('edit',compact('phone','id'));
+    }
+
+    public function destroy($id)
+    {
+        $phone = \App\Phone::find($id);
+        $phone->delete();
+        return redirect('phones')->with('success','Information has been  deleted');
     }
 }

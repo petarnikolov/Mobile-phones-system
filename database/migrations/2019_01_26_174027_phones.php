@@ -18,6 +18,8 @@ class Phones extends Migration
             $table->string('name');
             $table->date('releaseDate');
             $table->string('manufacturer');
+            $table->date('created_at');
+            $table->date('updated_at');
             $table->string('filename');
 
 
