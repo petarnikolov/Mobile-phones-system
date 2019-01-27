@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>Index Page</title>
-    <link rel="stylesheet" href="{{asset('css/app.css')}}">
-</head>
-<body>
+@extends('layouts.app')
+
+@section('content')
 <div class="container">
     <br />
     @if (\Session::has('success'))
@@ -13,6 +8,8 @@
             <p>{{ \Session::get('success') }}</p>
         </div><br />
     @endif
+    <a href="{{ URL('phones/create') }}" class="btn btn-primary"> Add new Phone </a>
+
     <table class="table table-striped">
         <thead>
         <tr>
@@ -34,20 +31,20 @@
                 <td>{{$phone['name']}}</td>
                 <td>{{$date}}</td>
                 <td>{{$phone['manufacturer']}}</td>
-
-
-                <td><a href="{{URL::to('CreatePhone', $phone['id'])}}" class="btn btn-warning">Edit</a></td>
+                <td>
+                <a class="btn btn-small btn-info" href="{{ URL::to('phones/' . $phone['id'] . '/edit') }}">Edit manufacturer</a>
+                </td>
+              {{--  <td><a href="{{action('PhonesController@edit', $phone['id'])}}" class="btn btn-warning">Edit</a></td>
                 <td>
                     <form action="{{action('PhonesController@destroy', $phone['id'])}}" method="post">
                         @csrf
                         <input name="_method" type="hidden" value="DELETE">
                         <button class="btn btn-danger" type="submit">Delete</button>
                     </form>
-                </td>
+                </td>  --}}
             </tr>
         @endforeach
         </tbody>
     </table>
 </div>
-</body>
-</html>
+@endsection

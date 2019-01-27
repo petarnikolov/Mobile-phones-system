@@ -37,7 +37,7 @@ class phonesController extends Controller
     public function edit($id)
     {
         $phone = \App\Phone::find($id);
-        return view('edit',compact('phone','id'));
+        return view('EditPhone',compact('phone','id'));
     }
 
     public function destroy($id)
