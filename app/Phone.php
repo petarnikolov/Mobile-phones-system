@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Phone extends Model
 {
     protected $fillable = ['name', 'releaseDate', 'manufacturer', 'filename'];
+
 }

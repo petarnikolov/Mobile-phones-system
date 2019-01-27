@@ -9,6 +9,7 @@
         </div><br />
     @endif
     <a href="{{ URL('phones/create') }}" class="btn btn-primary"> Add new Phone </a>
+    <a href="{{ URL::to('phones/GetByName/awdas') }}" class="btn btn-primary"> Filter by name </a>
 
     <table class="table table-striped">
         <thead>

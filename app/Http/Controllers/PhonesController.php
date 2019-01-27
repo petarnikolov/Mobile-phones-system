@@ -2,13 +2,34 @@
 
 namespace App\Http\Controllers;
 
+use App\Phone;
 use Illuminate\Http\Request;
 
 class phonesController extends Controller
 {
     public function index()
     {
-        $phones=\App\Phone::all();
+        $phones=Phone::all();
+        return view('index',compact('phones'));
+    }
+
+    public function GetByName($value)
+    {
+
+            $column = 'name';
+
+            $phones = Phone::where($column , '=', $value)->get();
+
+        return view('index',compact('phones'));
+    }
+
+    public function GetByManufacturer($value)
+    {
+
+        $column = 'manufacturer';
+
+        $phones = Phone::where($column , '=', $value)->get();
+
         return view('index',compact('phones'));
     }
 

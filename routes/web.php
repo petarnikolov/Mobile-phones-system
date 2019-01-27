@@ -19,3 +19,5 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource("phones","PhonesController");
+Route::get('/phones/GetByName/{value}','PhonesController@GetByName');
+Route::get('/phones/GetByManufacturer/{value}','PhonesController@GetByManufacturer');
