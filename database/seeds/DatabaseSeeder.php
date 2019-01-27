@@ -11,6 +11,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        DB::table('users')->insert([
+            'name' => str_random(10),
+            'email' => str_random(10).'@gmail.com',
+            'password' => bcrypt('secret'),]);
+
+        $timestamp = mt_rand(1, time());
+        $createddate = date('Y-m-d', time());
+        $randomDate = date("Y-m-d", $timestamp);
+        DB::table('phones')->insert([
+            'name' => str_random(10),
+            'releaseDate' => $randomDate,
+            'manufacturer' => str_random(10),
+            'created_at' => $createddate,
+            'updated_at' => $createddate,
+            'filename' => str_random(20)]);
+
     }
 }
