@@ -57,8 +57,17 @@ class phonesController extends Controller
     }
     public function edit($id)
     {
-        $phone = \App\Phone::find($id);
+        $phone = \App\Phone::Find($id);
         return view('EditPhone',compact('phone','id'));
+    }
+    public function update(Request $request, $id){
+        $phone=Phone::Find($id);
+        $phone->name=$request->get('name');
+        $phone->manufacturer=$request->get('manufacturer');
+        $phone->releaseDate = $request->get('releaseDate');
+        $phone->save();
+
+        return redirect('phones')->with('success', 'Information has been updated');
     }
 
     public function destroy($id)

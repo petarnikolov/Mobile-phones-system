@@ -18,6 +18,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource("phones","PhonesController");
-Route::get('/phones/GetByName/{value}','PhonesController@GetByName');
-Route::get('/phones/GetByManufacturer/{value}','PhonesController@GetByManufacturer');
+Route::resource("phones","PhonesController") ->middleware('auth');
+Route::get('/phones/GetByName/{value}','PhonesController@GetByName')->middleware('auth');
+Route::get('/phones/GetByManufacturer/{value}','PhonesController@GetByManufacturer')->middleware('auth');

@@ -11,6 +11,18 @@
     <a href="{{ URL('phones/create') }}" class="btn btn-primary"> Add new Phone </a>
     <a href="{{ URL::to('phones/GetByName/awdas') }}" class="btn btn-primary"> Filter by name </a>
 
+    <form method="POST" action="/phones/'name'" enctype="multipart/form-data">
+        <div class="form-group col-md-4">
+            <label for="Name">Name:</label>
+            <label>
+                <input type="text" class="form-control" name="name" >
+            </label>
+        </div>
+        <div class="form-group col-md-4" style="margin-top:60px">
+            <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+    </form>
+
     <table class="table table-striped">
         <thead>
         <tr>
@@ -33,7 +45,14 @@
                 <td>{{$date}}</td>
                 <td>{{$phone['manufacturer']}}</td>
                 <td>
-                <a class="btn btn-small btn-info" href="{{ URL::to('phones/' . $phone['id'] . '/edit') }}">Edit manufacturer</a>
+                <a class="btn btn-small btn-info" href="{{ URL::to('phones/' . $phone['id'] . '/edit') }}">Edit</a>
+                </td>
+                <td>
+                    <form action="{{action('PhonesController@destroy', $phone->id )}}" method="post">
+                        {{csrf_field()}}
+                        <input name="_method" type="hidden" value="DELETE">
+                        <button class="btn btn-danger" type="submit">Delete</button>
+                    </form>
                 </td>
               {{--  <td><a href="{{action('PhonesController@edit', $phone['id'])}}" class="btn btn-warning">Edit</a></td>
                 <td>
