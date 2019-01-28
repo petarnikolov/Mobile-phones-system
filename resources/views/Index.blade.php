@@ -8,19 +8,30 @@
             <p>{{ \Session::get('success') }}</p>
         </div><br />
     @endif
+    <div class="form-group col-md-4">
     <a href="{{ URL('phones/create') }}" class="btn btn-primary"> Add new Phone </a>
-    <a href="{{ URL::to('phones/GetByName/awdas') }}" class="btn btn-primary"> Filter by name </a>
-
-    <form method="POST" action="/phones/'name'" enctype="multipart/form-data">
+    </div>
+    <form method="POST" action="{{action("SearchController@GetByName")}}" role="search" >
+        @csrf
         <div class="form-group col-md-4">
             <label for="Name">Name:</label>
             <label>
                 <input type="text" class="form-control" name="name" >
             </label>
-        </div>
-        <div class="form-group col-md-4" style="margin-top:60px">
             <button type="submit" class="btn btn-success">Submit</button>
         </div>
+    </form>
+
+    <form method="POST" action="{{action("SearchController@GetByManufacturer")}}" role="search" >
+        @csrf
+        <div class="form-group col-md-6">
+            <label for="Name">Manufacturer:</label>
+            <label>
+                <input type="text" class="form-control" name="manufacturer" >
+            </label>
+            <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+
     </form>
 
     <table class="table table-striped">

@@ -19,5 +19,5 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource("phones","PhonesController") ->middleware('auth');
-Route::get('/phones/GetByName/{value}','PhonesController@GetByName')->middleware('auth');
-Route::get('/phones/GetByManufacturer/{value}','PhonesController@GetByManufacturer')->middleware('auth');
+Route::Post('/phones/GetByName/','SearchController@GetByName')->middleware('auth');
+Route::Post('/phones/GetByManufacturer/','SearchController@GetByManufacturer')->middleware('auth');
