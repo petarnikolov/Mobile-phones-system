@@ -24,12 +24,17 @@ class phonesController extends Controller
 
     public function store(Request $request)
     {
+
         if($request->hasfile('filename'))
         {
             $file = $request->file('filename');
             $name=time().$file->getClientOriginalName();
             $file->move(public_path().'/images/', $name);
         }
+        else
+            return redirect ('phones')->with('success','No file provided');
+
+
         $phone= new \App\Phone;
         $phone->name=$request->get('name');
         $phone->manufacturer=$request->get('manufacturer');

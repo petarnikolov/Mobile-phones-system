@@ -9,7 +9,7 @@
             <div class="form-group col-md-4">
                 <label for="Name">Name:</label>
                 <label>
-                    <input type="text" class="form-control" name="name">
+                    <input type="text" class="form-control" name="name" placeholder="Enter Phone Name" required>
                 </label>
             </div>
         </div>
@@ -18,7 +18,7 @@
             <div class="form-group col-md-4">
                 <label for="Name">Manufacturer:</label>
                 <label>
-                    <input type="text" class="form-control" name="manufacturer">
+                    <input type="text" class="form-control" name="manufacturer" placeholder="Enter Manufacturer " required>
                 </label>
             </div>
         </div>
@@ -31,9 +31,9 @@
         <div class="row">
             <div class="col-md-4"></div>
             <div class="form-group col-md-4">
-                <strong>Date : </strong>
+                <strong>Release Date : </strong>
                 <label for="datepicker"></label>
-                <input class="date form-control" type="text" id="datepicker" name="releaseDate">
+                <input class="date form-control" type="text" id="datepicker" name="releaseDate" placeholder="2019/01/01" required>
             </div>
         </div>
         <div class="row">

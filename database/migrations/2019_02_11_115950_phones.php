@@ -17,10 +17,15 @@ class Phones extends Migration
             $table->increments('id');
             $table->string('name');
             $table->date('releaseDate');
-            $table->string('manufacturer');
             $table->date('created_at');
             $table->date('updated_at');
             $table->string('filename');
+            $table->integer('manufacturer_id')
+                ->unsigned()->nullable()->default(NULL);
+            $table->foreign('manufacturer_id')
+                ->references('id')->on('manufacturers')
+                ->onDelete('cascade')
+                ->unsigned()->index();
 
 
         });

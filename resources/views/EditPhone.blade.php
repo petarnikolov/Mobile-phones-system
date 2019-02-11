@@ -11,7 +11,7 @@
                 <div class="form-group col-md-4">
                     <label for="Name">Name:</label>
                     <label>
-                        <input type="text" class="form-control" name="name" value="{{ $phone->name }}">
+                        <input type="text" class="form-control" name="name" value="{{ $phone->name }}" required>
                     </label>
                 </div>
             </div>
@@ -21,7 +21,7 @@
                 <div class="form-group col-md-4">
                     <label for="Name">Manufacturer:</label>
                     <label>
-                        <input type="text" class="form-control" name="manufacturer" value="{{ $phone->manufacturer }}">
+                        <input type="text" class="form-control" name="manufacturer" value="{{ $phone->manufacturer }}" required>
                     </label>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                 <div class="form-group col-md-4">
                     <strong>Date : </strong>
                     <label for="datepicker"></label>
-                    <input class="date form-control" type="text" id="datepicker" name="releaseDate">
+                    <input class="date form-control" type="text" id="datepicker" name="releaseDate" value="{{$phone->releaseDate}}" required>
                 </div>
             </div>
             <div class="row">

@@ -22,10 +22,12 @@ class DatabaseSeeder extends Seeder
         DB::table('phones')->insert([
             'name' => str_random(10),
             'releaseDate' => $randomDate,
-            'manufacturer' => str_random(10),
             'created_at' => $createddate,
             'updated_at' => $createddate,
             'filename' => str_random(20)]);
+        DB::table('manufacturers')->insert([
+            'name' => str_random(10),
+        ]);
 
     }
 }
