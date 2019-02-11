@@ -18,7 +18,11 @@
             <div class="form-group col-md-4">
                 <label for="Name">Manufacturer:</label>
                 <label>
-                    <input type="text" class="form-control" name="manufacturer" placeholder="Enter Manufacturer " required>
+                    <select class="select4" name="manufacturer" >
+                        <option value="">Please Select</option>
+                        @foreach($manufacturers as $manufacturer)
+                            <option value="{{$manufacturer->id}}" {{$manufacturer->id  ? 'selected' : ''}}>{{$manufacturer->name}}</option>
+                        @endforeach</select>
                 </label>
             </div>
         </div>

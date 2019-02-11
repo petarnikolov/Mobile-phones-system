@@ -4,12 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Phone;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class phonesController extends Controller
 {
     public function index()
     {
-        $phones=Phone::all();
+        $phones=DB::table('phones')
+            ->join('manufacturers', 'phones.manufacturer_id', '=', 'manufacturers.id')
+            ->select('phones.id', 'phones.name', 'phones.releaseDate', 'manufacturers.name as manufacturer')
+            ->get();
         return view('index',compact('phones'));
     }
 
@@ -19,7 +24,8 @@ class phonesController extends Controller
 
     public function create()
     {
-        return view('CreatePhone');
+        $manufacturers =DB::table('manufacturers')->select('id','name')->get();
+        return view('CreatePhone',compact('manufacturers'));
     }
 
     public function store(Request $request)
@@ -37,7 +43,7 @@ class phonesController extends Controller
 
         $phone= new \App\Phone;
         $phone->name=$request->get('name');
-        $phone->manufacturer=$request->get('manufacturer');
+        $phone->manufacturer_id=$request->get('manufacturer');
         $phone->releaseDate = $request->get('releaseDate');
         $phone->filename=$name;
         $phone->save();
@@ -47,12 +53,14 @@ class phonesController extends Controller
     public function edit($id)
     {
         $phone = \App\Phone::Find($id);
-        return view('EditPhone',compact('phone','id'));
+        $manufacturers =DB::table('manufacturers')->select('id','name')->get();
+
+        return view('EditPhone',compact('phone','id', 'manufacturers'));
     }
     public function update(Request $request, $id){
         $phone=Phone::Find($id);
         $phone->name=$request->get('name');
-        $phone->manufacturer=$request->get('manufacturer');
+        $phone->manufacturer_id=$request->get('manufacturer');
         $phone->releaseDate = $request->get('releaseDate');
         $phone->save();
 
