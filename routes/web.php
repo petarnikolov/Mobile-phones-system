@@ -18,5 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/rejected', 'HomeController@rejected')->name('rejected');
 Route::resource("phones","PhonesController") ->middleware('auth');
+Route::resource("manufacturers","ManufacturersController") ->middleware('is_admin');
 Route::Post('/phones/GetBy/','SearchController@GetBy')->middleware('auth');
